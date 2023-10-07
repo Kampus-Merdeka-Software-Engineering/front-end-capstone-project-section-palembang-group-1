@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud</title>
+
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&family=Righteous&family=Roboto+Slab:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--CSS-->
+    <link rel="stylesheet" href="css/signUp.css" />
+  </head>
+  <body>
+    <!--Header-->
+    <header>
+      <img src="img/LogoIntro.png" class="logo" />
+    </header>
+
+    <!--Content-->
+    <section>
+      <!--Image Content-->
+      <div class="imgBx">
+        <img src="img/signup.jpeg" />
+        <img src="img/Logo-putih.png" alt="" class="logo-imgBx" />
+        <button id="btnsignIn" class="btn">Sign In</button>
+      </div>
+      <!--Form Content-->
+      <div class="contentBx">
+        <div class="formBx">
+          <img src="img/CCloud Blue.png" alt="" />
+          <h1>Hello, Friend!</h1>
+          <p>Let's join with us</p>
+          <form id="register-form">
+            <div class="top-row">
+              <div class="field-wrap">
+                <input
+                  type="text"
+                  id="firstName"
+                  required
+                  autocomplete="off"
+                  placeholder="First Name"
+                />
+              </div>
+              <div class="field-wrap">
+                <input
+                  type="text"
+                  id="lastName"
+                  required
+                  autocomplete="off"
+                  placeholder="Last Name"
+                />
+              </div>
+            </div>
+            <div class="field-wrap">
+              <input
+                type="email"
+                id="email"
+                required
+                autocomplete="off"
+                placeholder="Email"
+              />
+            </div>
+            <div class="top-row">
+              <div class="field-wrap">
+                <input
+                  type="password"
+                  required
+                  autocomplete="on"
+                  placeholder="Password"
+                  id="myinput1"
+                />
+              </div>
+              <div class="field-wrap">
+                <input
+                  type="password"
+                  required
+                  autocomplete="on"
+                  id="myinput2"
+                  placeholder="Confirm Password"
+                />
+              </div>
+            </div>
+            <input type="checkbox" onclick="myFunction()" />Tampilkan Password
+            <div class="InputBx">
+              <input type="submit" value="Create Account" name="" />
+            </div>
+            <p class="login">
+              already have an account? <a href="signIn.html">Login here!</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer -->
+    <footer>
+      <p>
+        By: Group1<br />
+        <a href="mailto:cloud@example.com">cloud@example.com</a>
+      </p>
+    </footer>
+  </body>
+
+  <!-- External JavaScript-->
+  <script src="js/signUp.js"></script>
+</html>
