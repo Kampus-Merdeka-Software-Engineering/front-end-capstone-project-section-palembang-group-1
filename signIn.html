@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cloud</title>
+
+    <!--Font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inria+Sans:wght@300;400&family=Righteous&family=Roboto+Slab:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--External CSS-->
+    <link rel="stylesheet" href="css/signIn.css" />
+  </head>
+
+  <body>
+    <!--Header-->
+    <header>
+      <img src="img/LogoIntro.png" class="logo" />
+    </header>
+
+    <!--Content -->
+    <section>
+      <!--Form Content-->
+      <div class="contentBx">
+        <div class="formBx">
+          <img src="img/CCloud Blue.png" alt="" />
+          <h1>Welcome Back</h1>
+          <p>login to continue</p>
+          <form id="login-form">
+            <div class="inputBx">
+              <span>Email</span>
+              <input type="email" name="" placeholder=" Email" id="email" />
+            </div>
+            <div class="inputBx">
+              <span>Password</span>
+              <input
+                type="password"
+                name=""
+                placeholder="  Password"
+                id="inputPass"
+              />
+            </div>
+            <input type="checkbox" onclick="signInPass()" />Tampilkan Password
+            <div class="InputBx">
+              <input type="submit" value="Login" name="" />
+              <p class="register">
+                Not a member? <a href="signUp.html">Register here!</a>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!--Image Content-->
+      <div class="imgBx">
+        <img src="/img/shopping.png" />
+        <img src="img/Logo-putih.png" alt="" class="logo-imgBx" />
+        <button id="btnsignUp" class="btn">Sign Up</button>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <footer>
+      <p>
+        By: Group1<br />
+        <a href="mailto:cloud@example.com">cloud@example.com</a>
+      </p>
+    </footer>
+  </body>
+
+  <!-- External JavaScript-->
+  <script src="js/signIn.js"></script>
+</html>
