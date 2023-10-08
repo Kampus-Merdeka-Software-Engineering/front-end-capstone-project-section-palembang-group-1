@@ -33,7 +33,7 @@ document
     const confirmPassword = document.getElementById("confirmPassword").value;
 
     // Buat permintaan HTTP POST ke endpoint registrasi di backend
-    fetch("/api/register", {
+    fetch("https://backend-group1-production.up.railway.app/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
