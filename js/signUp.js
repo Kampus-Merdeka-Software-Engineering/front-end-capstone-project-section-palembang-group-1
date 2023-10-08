@@ -52,6 +52,11 @@ document
         // Misalnya, tampilkan pesan sukses atau pesan kesalahan
         if (data.message === "User registered successfully") {
           alert("Registrasi berhasil! Silakan login.");
+           const signupButton = document.getElementById("signupbtn");
+          
+          // Menambahkan class ke elemen tombol login
+          signupButton.classList.add("signupBtn");
+
           window.location.href = "homepage.html";
         } else {
           alert("Registrasi gagal. Silakan coba lagi.");
