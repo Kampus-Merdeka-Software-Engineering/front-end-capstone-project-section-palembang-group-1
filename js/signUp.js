@@ -26,11 +26,11 @@ document
   .addEventListener("submit", function (event) {
     event.preventDefault();
 
-    const firstname = document.getElementById("firstname").value;
-    const lastname = document.getElementById("lastname").value;
+    const firstname = document.getElementById("firstName").value;
+    const lastname = document.getElementById("lastName").value;
     const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+    const password = document.getElementById("myinput1").value;
+    const confirmPassword = document.getElementById("myinput2").value;
 
     // Buat permintaan HTTP POST ke endpoint registrasi di backend
     fetch("https://backend-group1-production.up.railway.app/users/register", {
