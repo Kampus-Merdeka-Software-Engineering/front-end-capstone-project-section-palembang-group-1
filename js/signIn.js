@@ -16,23 +16,40 @@ function goToAnotherPage() {
 document.getElementById("btnsignUp").onclick = goToAnotherPage;
 
 //  Menghandle submit form login
-$('#btnlogin').on('click',function() {
-    $.ajax({
-        url: 'https://backend-group1-production.up.railway.app/users/login',
-        type: 'POST',
-        data: JSON.stringify({
-            email: $('#email').val(),
-            password: $('#inputPass').val()
-        }),
-        dataType: 'json',
-        contentType: 'application/json; charset=utf-8',
-        success: function (response) {
-            // console.log(response)
-            if (response[0]['message'] === 'Login Successful') {
-                localStorage.setItem('email', response[0]['payload']['email']);
-                localStorage.setItem('id', response[0]['payload']['id']);
-                window.location.href = '/homepage.html'
-            }
-        }
+document
+  .getElementById("login-form")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("inputPass").value;
+
+    // Buat permintaan HTTP POST ke endpoint login di backend
+    fetch("/api/login", {
+      url: 'https://backend-group1-production.up.railway.app/users/login',
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
     })
-})
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle respons dari backend di sini
+        if (data.message === "Login successful") {
+          alert("Login berhasil!");
+          const loginButton = document.getElementById("loginbtn");
+          
+          // Menambahkan class ke elemen tombol login
+          loginButton.classList.add("loginBtn");
+
+          window.location.href = "homepage.html"; // Atau lakukan tindakan lain seperti mengarahkan pengguna ke halaman utama
+        } else {
+          alert("Login gagal. Cek kembali email dan password Anda.");
+        }
+      })
+      .catch((error) => {
+        // Handle kesalahan jika terjadi selama permintaan
+        console.error("Terjadi kesalahan:", error);
+      });
+  });
