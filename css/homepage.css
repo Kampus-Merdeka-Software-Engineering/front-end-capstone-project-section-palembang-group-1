@@ -338,7 +338,7 @@ header .navbar-extra a {
 .product {
   margin: 0 50px;
   padding-top: 60px;
-  height: 100vh;
+  height: 200%;
   box-sizing: border-box;
   position: relative;
 }
