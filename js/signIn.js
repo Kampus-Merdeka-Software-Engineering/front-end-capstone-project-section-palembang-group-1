@@ -26,6 +26,7 @@ document
 
     // Buat permintaan HTTP POST ke endpoint login di backend
     fetch("/api/login", {
+      url: 'https://backend-group1-production.up.railway.app/users/login',
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,6 +38,11 @@ document
         // Handle respons dari backend di sini
         if (data.message === "Login successful") {
           alert("Login berhasil!");
+          const loginButton = document.getElementById("loginbtn");
+          
+          // Menambahkan class ke elemen tombol login
+          loginButton.classList.add("loginBtn");
+
           window.location.href = "homepage.html"; // Atau lakukan tindakan lain seperti mengarahkan pengguna ke halaman utama
         } else {
           alert("Login gagal. Cek kembali email dan password Anda.");
