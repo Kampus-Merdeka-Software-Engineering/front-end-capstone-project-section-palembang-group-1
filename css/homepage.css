@@ -520,35 +520,34 @@ header .navbar-extra a {
 .br {
   border: 2px solid rgb(228, 151, 8);
 }
-.tulisan {
+.tulisan{
   padding-left: 130px;
   padding-top: 10px;
 }
-.tulisan h1 {
+.tulisan h1{
   font-size: 2rem;
   color: black;
   text-transform: capitalize;
 }
-
-.tulisan .alamat h2 {
+.tulisan .alamat h2{
   color: black;
   font-size: 18px;
   line-height: 30px;
 }
-.tulisan .alamat {
+.tulisan .alamat{
   padding-top: 20px;
 }
-.tulisan .toko {
+.tulisan .toko{
   font-size: 2rem;
   color: rgb(8, 52, 228);
 }
-iframe {
+iframe{
   width: 100vh;
   height: 100px;
   border: none;
 }
-.tulisan iframe {
-  float: right;
+.tulisan iframe{
+  float:right;
   height: 170px;
   width: 340px;
   margin-right: 95px;
