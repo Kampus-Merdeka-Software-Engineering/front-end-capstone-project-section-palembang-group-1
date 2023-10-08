@@ -25,7 +25,7 @@ document
     const password = document.getElementById("inputPass").value;
 
     // Buat permintaan HTTP POST ke endpoint login di backend
-    fetch("https://backend-group1-production.up.railway.app/users/login'", {
+    fetch("https://backend-group1-production.up.railway.app/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
