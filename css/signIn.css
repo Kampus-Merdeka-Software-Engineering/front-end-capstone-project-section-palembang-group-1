@@ -160,7 +160,7 @@ footer {
 }
 
 /* Responsif*/
-@media (max-width: 800px) {
+@media (max-width: 768px) {
   section .imgBx {
     position: absolute;
     left: 0;
