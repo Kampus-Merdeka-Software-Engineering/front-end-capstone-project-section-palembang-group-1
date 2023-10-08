@@ -57,7 +57,7 @@ document
           // Menambahkan class ke elemen tombol login
           signupButton.classList.add("signupbtn");
 
-          window.location.href = "homepage.html";
+          window.location.href = "signIn.html";
         } else {
           alert("Registrasi gagal. Silakan coba lagi.");
         }
