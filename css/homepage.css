@@ -520,9 +520,6 @@ header .navbar-extra a {
 .br {
   border: 2px solid rgb(228, 151, 8);
 }
-.lokasi {
-  margin-top: 10px;
-}
 .tulisan {
   padding-left: 130px;
   padding-top: 10px;
@@ -545,7 +542,11 @@ header .navbar-extra a {
   font-size: 2rem;
   color: rgb(8, 52, 228);
 }
-
+iframe {
+  width: 100vh;
+  height: 100px;
+  border: none;
+}
 .tulisan iframe {
   float: right;
   height: 170px;
@@ -554,7 +555,6 @@ header .navbar-extra a {
   margin-bottom: 6px;
   border-radius: 26px;
 }
-
 /*/ footer /*/
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
