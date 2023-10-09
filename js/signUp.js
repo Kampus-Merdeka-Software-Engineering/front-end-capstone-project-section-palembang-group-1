@@ -17,7 +17,7 @@ function goToAnotherPage() {
   window.location.href = "signIn.html";
 }
 
-document.getElementById("btn-signIn").onclick = goToAnotherPage;
+document.getElementById("btnsignIn").onclick = goToAnotherPage;
 
 // script.js Handle Register
 // script.js
