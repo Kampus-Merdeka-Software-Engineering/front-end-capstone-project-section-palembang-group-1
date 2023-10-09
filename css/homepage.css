@@ -463,6 +463,7 @@ header .navbar-extra a {
 }
 .card-content .card-body a:hover {
   background: rgb(8, 52, 228);
+  cursor: pointer;
 }
 /*/ Information /*/
 .information {
