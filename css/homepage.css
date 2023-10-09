@@ -16,7 +16,7 @@ body {
   font-family: "inria Sans", sans-serif;
   background-color: var(--bg);
   color: #fff;
-  width: auto;
+  width: 100vh;
 }
 /* header */
 header {
