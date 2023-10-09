@@ -105,7 +105,7 @@ function addCartClicked(event) {
 
   var titleElement = shopProducts.querySelector(".card-title");
   var priceElement = shopProducts.querySelector(".card-price");
-  var productElemet = shopProducts.querySelector(".card-img");
+  var productElement = shopProducts.querySelector(".card-img");
 
   if (!titleElement || !priceElement) {
     console.error("Could not find title or price elements");
@@ -114,7 +114,7 @@ function addCartClicked(event) {
 
   var title = titleElement.innerText;
   var price = priceElement.innerText;
-  var productImg = productElemet.src;
+  var productImg = productElement.src;
 
   addProductToCart(title, price, productImg);
   updatetotal();
