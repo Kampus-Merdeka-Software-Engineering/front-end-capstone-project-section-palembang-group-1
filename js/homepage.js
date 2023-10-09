@@ -107,9 +107,14 @@ document.addEventListener("DOMContentLoaded", function () {
         const productElement = document.createElement("div");
         productElement.classList.add("shop-cart");
         productElement.innerHTML = `
-            <p>${item.Product.name}</p>
-            <p>Amount: ${item.amount}</p>
-            <i class="fa-solid fa-trash cart-remove" data-id="${item.id}">Remove</i>
+                <img src="${item.Product.image}" alt="" class="cart-img" />
+                <div class="detail-box">
+                    <div class="cart-product-title">${item.Product.name}</div>
+                    <div class="cart-price">Rp. ${item.Product.price}</div>
+                    <input type="number" value="${item.amount}" class="cart-quantity" />
+                </div>
+                <i class="fa-solid fa-trash cart-remove" data-id="${item.id}" style="color: #c80e17"></i>
+
         `;
         cartContainer.appendChild(productElement);
       });
