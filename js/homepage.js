@@ -37,106 +37,136 @@ closeProfile.onclick = () => {
   sidenav.classList.remove("active");
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  const cartContainer = document.querySelector(".cart");
-  const addToCartButton = document.getElementById("buyButton");
+//cart Work
+if (document.readyState == "loading") {
+  document.addEventListener("DOMContentLoaded", ready);
+} else {
+  ready();
+}
 
-  // Fungsi untuk menambahkan produk ke keranjang
-  async function addToCart() {
-    try {
-      const productId = 1; // Gantilah dengan ID produk yang ingin ditambahkan
-      const amount = 1; // Jumlah produk yang ingin ditambahkan
+function ready() {
+  var removeCartButtons = document.getElementsByClassName("cart-remove");
+  console.log(removeCartButtons);
+  for (var i = 0; i < removeCartButtons.length; i++) {
+    var button = removeCartButtons[i];
+    button.addEventListener("click", removeCartItem);
+  }
+  var quantityInputs = document.getElementsByClassName("cart-quantity");
+  for (var i = 0; i < quantityInputs.length; i++) {
+    var input = quantityInputs[i];
+    input.addEventListener("change", quantityChanged);
+  }
+  var addCart = document.getElementsByClassName("buyButton");
+  for (var i = 0; i < addCart.length; i++) {
+    var button = addCart[i];
+    button.addEventListener("click", addCartClicked);
+  }
+  document
+    .getElementsByClassName("btn-buy")[0]
+    .addEventListener("click", buyButtonClicked);
+}
 
-      const response = await fetch("https://backend-group1-production.up.railway.app/cart/addtocart", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ productId, amount }),
-      });
+//action Buy Button
+function buyButtonClicked() {
+  alert("Your Order is Placed");
+  var cartContent = document.getElementsByClassName("cart-content")[0];
+  while (cartContent.hasChildNodes()) {
+    cartContent.removeChild(cartContent.firstChild);
+  }
+  updatetotal();
+}
 
-      if (!response.ok) {
-        throw new Error("Failed to add product to cart");
-      }
+//remove cart
+function removeCartItem(event) {
+  var buttonClicked = event.target;
+  buttonClicked.parentElement.remove();
+  updatetotal();
+}
 
-      const data = await response.json();
-      console.log(data);
+//change quntity
+function quantityChanged(event) {
+  var input = event.target;
+  if (isNaN(input.value) || input.value <= 0) {
+    input.value = 1;
+  }
+  updatetotal();
+}
 
-      // Memuat ulang isi keranjang setelah menambahkan produk
-      loadCart();
-    } catch (error) {
-      console.error("Error:", error);
+//add cart
+function addCartClicked(event) {
+  var button = event.target;
+
+  var shopProducts = button.closest(".card-content");
+
+  if (!shopProducts) {
+    console.error("Could not find parent element with class 'card-content'");
+    return;
+  }
+
+  var titleElement = shopProducts.querySelector(".card-title");
+  var priceElement = shopProducts.querySelector(".card-price");
+  var productElemet = shopProducts.querySelector(".card-img");
+
+  if (!titleElement || !priceElement) {
+    console.error("Could not find title or price elements");
+    return;
+  }
+
+  var title = titleElement.innerText;
+  var price = priceElement.innerText;
+  var productImg = productElemet.src;
+
+  addProductToCart(title, price, productImg);
+  updatetotal();
+}
+
+//add product to cart
+function addProductToCart(title, price, productImg) {
+  var cartShopBox = document.createElement("div");
+  cartShopBox.classList.add("cart-box");
+  var cartItems = document.getElementsByClassName("cart-content")[0];
+  var cartItemsNames = cartItems.getElementsByClassName("cart-product-title");
+  for (var i = 0; i < cartItemsNames.length; i++) {
+    if (cartItemsNames[i].innerText == title) {
+      alert("You have already add this item to cart");
+      return;
     }
   }
 
-  // Fungsi untuk menghapus produk dari keranjang
-  async function removeFromCart(itemId) {
-    try {
-      const response = await fetch("https://backend-group1-production.up.railway.app/cart/removecart/:id", {
-        method: "DELETE",
-      });
+  var cartBoxContent = `
+<img src="${productImg}" alt="" class="cart-img" />
+  <div class="detail-box">
+    <div class="cart-product-title">"${title}" </div>
+    <div class="cart-price">"${price}" </div>
+    <input type="number" value="1" class="cart-quantity" />
+  </div><i
+    class="fa-solid fa-trash cart-remove"
+    style="color: #c80e17"
+  </i>`;
+  cartShopBox.innerHTML = cartBoxContent;
+  cartItems.append(cartShopBox);
+  cartShopBox
+    .getElementsByClassName("cart-remove")[0]
+    .addEventListener("click", removeCartItem);
+  cartShopBox
+    .getElementsByClassName("cart-quantity")[0]
+    .addEventListener("change", quantityChanged);
+}
 
-      if (!response.ok) {
-        throw new Error("Failed to remove product from cart");
-      }
+//update total
+function updatetotal() {
+  var cartContent = document.getElementsByClassName("cart-content")[0];
+  var cartBoxes = cartContent.getElementsByClassName("cart-box");
+  var total = 0;
+  for (var i = 0; i < cartBoxes.length; i++) {
+    var cartBox = cartBoxes[i];
+    var priceElement = cartBox.getElementsByClassName("cart-price")[0];
+    var quantityElement = cartBox.getElementsByClassName("cart-quantity")[0];
+    var price = parseFloat(priceElement.innerText.replace("Rp", " "));
+    var quantity = quantityElement.value;
+    total = total + price * quantity;
+    total = Math.round(total * 100) / 100;
 
-      const data = await response.json();
-      console.log(data);
-
-      // Memuat ulang isi keranjang setelah menghapus produk
-      loadCart();
-    } catch (error) {
-      console.error("Error:", error);
-    }
+    document.getElementsByClassName("total-price")[0].innerText = "Rp" + total;
   }
-
-  // Fungsi untuk memuat isi keranjang
-  async function loadCart() {
-    try {
-      const response = await fetch("https://backend-group1-production.up.railway.app/cart/getcart", {
-        method: "GET",
-      }); // Gantilah dengan URL endpoint yang sesuai
-     
-      if (!response.ok) {
-        throw new Error("Failed to fetch cart data");
-      }
-
-      const cartItems = await response.json();
-      cartContainer.innerHTML = ""; // Kosongkan isi keranjang sebelum menambahkan produk
-
-      // Tampilkan daftar produk dalam keranjang
-      cartItems.forEach((item) => {
-        const productElement = document.createElement("div");
-        productElement.classList.add("cart-box");
-        productElement.innerHTML = `
-                <img src="${item.Product.image}" alt="" class="cart-img" />
-                <div class="detail-box">
-                    <div class="cart-product-title">${item.Product.name}</div>
-                    <div class="cart-price">Rp. ${item.Product.price}</div>
-                    <input type="number" value="${item.amount}" class="cart-quantity" />
-                </div>
-                <i class="fa-solid fa-trash cart-remove" data-id="${item.id}" style="color: #c80e17"></i>
-
-        `;
-        cartContainer.appendChild(productElement);
-      });
-
-      // Tambahkan event listener untuk tombol "Remove"
-      const removeButtons = document.querySelectorAll(".cart-remove");
-      removeButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const itemId = button.getAttribute("data-id");
-          removeFromCart(itemId);
-        });
-      });
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
-
-  // Memuat isi keranjang saat halaman dimuat
-  loadCart();
-
-  // Menambahkan event listener untuk tombol "Add to Cart"
-  addToCartButton.addEventListener("click", addToCart);
-});
+}
