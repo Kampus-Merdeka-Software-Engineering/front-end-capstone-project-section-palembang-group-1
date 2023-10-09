@@ -38,7 +38,7 @@ closeProfile.onclick = () => {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  const cartContainer = document.querySelector("cart");
+  const cartContainer = document.querySelector(".cart");
   const addToCartButton = document.getElementById("buyButton");
 
   // Fungsi untuk menambahkan produk ke keranjang
