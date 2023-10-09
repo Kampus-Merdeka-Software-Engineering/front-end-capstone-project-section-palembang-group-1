@@ -38,7 +38,7 @@ closeProfile.onclick = () => {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-  const cartContainer = document.querySelector(".cart");
+  const cartContainer = document.querySelector("cart");
   const addToCartButton = document.getElementById("buyButton");
 
   // Fungsi untuk menambahkan produk ke keranjang
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const productId = 1; // Gantilah dengan ID produk yang ingin ditambahkan
       const amount = 1; // Jumlah produk yang ingin ditambahkan
 
-      const response = await fetch("/api/cart/add", {
+      const response = await fetch("https://backend-group1-production.up.railway.app/cart/addtocart", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fungsi untuk menghapus produk dari keranjang
   async function removeFromCart(itemId) {
     try {
-      const response = await fetch(`/api/cart/remove/${itemId}`, {
+      const response = await fetch("https://backend-group1-production.up.railway.app/cart/removecart/:id", {
         method: "DELETE",
       });
 
@@ -109,13 +109,13 @@ document.addEventListener("DOMContentLoaded", function () {
         productElement.innerHTML = `
             <p>${item.Product.name}</p>
             <p>Amount: ${item.amount}</p>
-            <i class="remove-cart" data-id="${item.id}">Remove</i>
+            <i class="fa-solid fa-trash cart-remove" data-id="${item.id}">Remove</i>
         `;
         cartContainer.appendChild(productElement);
       });
 
       // Tambahkan event listener untuk tombol "Remove"
-      const removeButtons = document.querySelectorAll(".remove-cart");
+      const removeButtons = document.querySelectorAll(".cart-remove");
       removeButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const itemId = button.getAttribute("data-id");
