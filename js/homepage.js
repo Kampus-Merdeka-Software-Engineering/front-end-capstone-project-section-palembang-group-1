@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Fungsi untuk memuat isi keranjang
   async function loadCart() {
     try {
-      const response = await fetch("/api/cart"); // Gantilah dengan URL endpoint yang sesuai
+      const response = await fetch("https://backend-group1-production.up.railway.app/cart/getcart"); // Gantilah dengan URL endpoint yang sesuai
 
       if (!response.ok) {
         throw new Error("Failed to fetch cart data");
