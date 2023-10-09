@@ -13,12 +13,16 @@ function myFunction() {
 }
 
 // go to Another Page for Sign In Button
-  // Menangani klik pada tombol "Sign In"
-  const btnSignIn = document.getElementById("btnsignIn");
-  btnSignIn.addEventListener("click", function() {
-    // Mengarahkan pengguna ke halaman sign-in
-    window.location.href = "signIn.html"; // Gantilah dengan URL halaman sign-in yang sesuai
+ document.addEventListener("DOMContentLoaded", function() {
+
+  const gotoSignIn = document.getElementById("btnsignIn");
+  gotoSignIn.addEventListener("click", function() {
+    window.location.href = "signIn.html"; 
+  
   });
+});
+
+  
 
 // script.js Handle Register
 // script.js
