@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
       // Tampilkan daftar produk dalam keranjang
       cartItems.forEach((item) => {
         const productElement = document.createElement("div");
-        productElement.classList.add("cart-item");
+        productElement.classList.add("cart");
         productElement.innerHTML = `
             <p>${item.Product.name}</p>
             <p>Amount: ${item.amount}</p>
