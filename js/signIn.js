@@ -9,11 +9,12 @@ function signInPass() {
 }
 
 // go to Another Page for Sign Up Button
-function goToAnotherPage() {
-  window.location.href = "signUp.html";
-}
-
-document.getElementById("btnsignUp").onclick = goToAnotherPage;
+document.addEventListener("DOMContentLoaded", function() {
+            // Mengatur onclick event untuk tombol "Sign In"
+            document.getElementById("btnsignUp").onclick = function() {
+                window.location.href = "signUp.html";
+            };
+        });
 
 //  Menghandle submit form login
 document
