@@ -13,11 +13,12 @@ function myFunction() {
 }
 
 // go to Another Page for Sign In Button
-function goToAnotherPage() {
-  window.location.href = "signIn.html";
-}
-
-document.getElementById("btnsignIn").onclick = goToAnotherPage;
+document.addEventListener("DOMContentLoaded", function() {
+            // Mengatur onclick event untuk tombol "Sign In"
+            document.getElementById("btnsignIn").onclick = function() {
+                window.location.href = "signIn.html";
+            };
+        });
   
 
 // script.js Handle Register
