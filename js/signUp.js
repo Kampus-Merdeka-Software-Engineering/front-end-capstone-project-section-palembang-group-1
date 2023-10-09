@@ -13,15 +13,11 @@ function myFunction() {
 }
 
 // go to Another Page for Sign In Button
- document.addEventListener("DOMContentLoaded", function() {
+function goToAnotherPage() {
+  window.location.href = "signIn.html";
+}
 
-  const gotoSignIn = document.getElementById("btnsignIn");
-  gotoSignIn.addEventListener("click", function() {
-    window.location.href = "signIn.html"; 
-  
-  });
-});
-
+document.getElementById("btnsignIn").onclick = goToAnotherPage;
   
 
 // script.js Handle Register
